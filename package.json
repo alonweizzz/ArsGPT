@@ -1,0 +1,1 @@
+{"name":"arsgpt","version":"1.0.0","private":true,"description":"Israeli slang AI chatbot web app","scripts":{"start":"vercel dev"},"engines":{"node":">=20"}}
