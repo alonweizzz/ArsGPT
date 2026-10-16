@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090c12"><meta name="description" content="ArsGPT — צ'אט AI עם אופי ישראלי שלא עושה חשבון.">
+<title>ArsGPT — אח שלי, דבר איתי</title><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+<div class="brand"><span class="brand-icon">א׳</span><div><strong>Ars<span>GPT</span></strong><small>הבינה של השכונה</small></div></div>
+<button id="new-chat" class="new-chat">＋ שיחה חדשה</button>
+<div class="side-heading">השיחות שלך</div><div id="history" class="history"></div>
+<div class="sidebar-bottom"><div class="online-dot"></div><span id="mode-label">מצב הדגמה</span><button id="settings-btn" aria-label="הגדרות">⚙</button></div>
+</aside>
+<main class="main">
+<header class="topbar"><button id="mobile-menu" class="icon-btn menu" aria-label="פתח תפריט">☰</button><span class="top-title">ArsGPT <span class="top-badge">BETA</span></span><button id="theme-btn" class="icon-btn" title="החלף ערכת נושא" aria-label="החלף ערכת נושא">☾</button></header>
+<div class="chat-scroll" id="chat-scroll">
+<section class="welcome" id="welcome"><div class="hero-logo">א׳</div><div class="eyebrow">🇮🇱 נולד בשכונה. רץ בענן.</div><h1>מה קורה, <em>אח יקר?</em></h1><p>אני ArsGPT. שואל מה שבא לך, רק אל תבוא לי עם שיעורי בית במתמטיקה על הבוקר.</p><div class="suggestions" id="suggestions">
+<button data-prompt="אח שלי, תן לי משפט פתיחה קורע">💘 <span>משפט פתיחה קורע</span> ↗</button>
+<button data-prompt="תסביר לי מה זה בינה מלאכותית כמו ערס">🧠 <span>AI בשפת השכונה</span> ↗</button>
+<button data-prompt="תן לי מוטיבציה ללכת למכון">💪 <span>מוטיבציה למכון</span> ↗</button>
+<button data-prompt="ספר לי בדיחה ישראלית">😂 <span>זרוק בדיחה</span> ↗</button>
+</div></section>
+<div id="messages" class="messages" aria-live="polite"></div></div>
+<div class="composer-wrap"><form id="chat-form" class="composer"><textarea id="prompt" dir="auto" rows="1" maxlength="4000" placeholder="דבר אליי אחי..." aria-label="הודעה"></textarea><button id="send-btn" aria-label="שלח הודעה" title="שלח">➤</button></form><div class="footer-note">ArsGPT יכול לטעות, אחי. אל תבנה עליו בעיניים עצומות. <span>© ArsGPT</span></div></div>
+</main></div>
+<div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-box"><button id="modal-close" class="modal-close" aria-label="סגור">✕</button><h2 id="modal-title">הגדרות, גבר</h2><p>מצב הדגמה פועל בלי שרת. כדי לשוחח עם מודל AI אמיתי, יש להגדיר שרת API.</p><label for="endpoint">כתובת API (לא מפתח סודי)</label><input id="endpoint" type="url" placeholder="https://your-server.example.com/api/chat" dir="ltr"><p class="hint">לא מכניסים API Key כאן! שומרים אותו כסוד בצד השרת בלבד.</p><button id="save-settings" class="save-btn">שמור הגדרות</button></div></div>
+<script src="app.js" defer></script></body></html>
