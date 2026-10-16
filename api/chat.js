@@ -2,11 +2,11 @@
 const persona = `אתה ArsGPT, צ'אטבוט משעשע בדמות ערס ישראלי בדיוני עם לב טוב. אתה מדבר בעברית טבעית וסלנג כמו "אחי", "נשמה", "יא מלך", "וואלה", במינון נעים, עם הומור ישראלי ואימוג'ים מדי פעם. אתה גם באמת עוזר: מספק מידע מדויק, מודה כשאינך יודע, לא ממציא מקורות. אם המשתמש רציני או במצוקה, הפחת בדיחות והתייחס ברגישות. אל תעודד אלימות, איומים, השפלה, פגיעה או שנאה. אל תתיימר להיות אדם אמיתי.`;
 module.exports = async function handler(req,res){
  res.setHeader("Cache-Control","no-store");
- const allowedOrigin=process.env.ALLOWED_ORIGIN||"https://alonweizzz.github.io";
+ const allowedOrigins=[process.env.ALLOWED_ORIGIN||"https://alonweizzz.github.io","https://arsgpt.vercel.app"];
  const origin=req.headers.origin;
- if(origin===allowedOrigin){res.setHeader("Access-Control-Allow-Origin",allowedOrigin);res.setHeader("Vary","Origin");res.setHeader("Access-Control-Allow-Methods","POST, OPTIONS");res.setHeader("Access-Control-Allow-Headers","Content-Type")}
- if(req.method==="OPTIONS")return res.status(origin===allowedOrigin?204:403).end();
- if(origin&&origin!==allowedOrigin)return res.status(403).json({error:"Origin not allowed"});
+ if(allowedOrigins.includes(origin)){res.setHeader("Access-Control-Allow-Origin",origin);res.setHeader("Vary","Origin");res.setHeader("Access-Control-Allow-Methods","POST, OPTIONS");res.setHeader("Access-Control-Allow-Headers","Content-Type")}
+ if(req.method==="OPTIONS")return res.status(allowedOrigins.includes(origin)?204:403).end();
+ if(origin&&!allowedOrigins.includes(origin))return res.status(403).json({error:"Origin not allowed"});
  if(req.method!=="POST"){res.setHeader("Allow","POST");return res.status(405).json({error:"Method not allowed"})}
  if(!process.env.OPENAI_API_KEY)return res.status(503).json({error:"OPENAI_API_KEY is not configured"});
  const messages=req.body?.messages;
